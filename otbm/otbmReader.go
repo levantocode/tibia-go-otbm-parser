@@ -20,7 +20,8 @@ func NewOTBMReader(filePath string) (*OTBMReader, error) {
 // Loads the map file and processes each node.
 func (otbmReader *OTBMReader) StartReadingBytes() error {
 	if ok, _ := otbmReader.hasValidMagicIdentifier(); !ok {
-		fmt.Println("Invalid OTBM root node detected.")
+		otbmReader.DumpFileContents()
+		fmt.Println("Invalid OTBM Magic Identifier.")
 		return errors.New("invalid OTBM Magic Identifier")
 	}
 
