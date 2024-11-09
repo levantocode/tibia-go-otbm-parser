@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	_, err := otbm.NewOTBMReader("resources/tfs.otbm")
+	_, err := otbm.NewOTBMReader("resources/forgotten.otbm")
 	if err != nil {
 		log.Fatalf("Failed to load OTBM file: %v", err)
 	}
