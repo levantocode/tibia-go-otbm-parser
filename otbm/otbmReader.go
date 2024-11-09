@@ -21,8 +21,14 @@ func NewOTBMReader(filePath string) (*OTBMReader, error) {
 func (otbmReader *OTBMReader) StartReadingBytes() error {
 	if ok, _ := otbmReader.hasValidMagicIdentifier(); !ok {
 		otbmReader.DumpFileContents()
-		fmt.Println("Invalid OTBM Magic Identifier.")
+		fmt.Println("Invalid OTBM Magic Identifier detected.")
 		return errors.New("invalid OTBM Magic Identifier")
+	}
+
+	if ok, _ := otbmReader.ReadHeader(); !ok {
+		fmt.Println("Invalid OTBM Header detected.")
+		otbmReader.DumpFileContents()
+		return errors.New("invalid OTBM Header")
 	}
 
 	return nil
