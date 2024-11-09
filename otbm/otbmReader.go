@@ -5,11 +5,6 @@ import (
 	"os"
 )
 
-// Reads & Processes an OTBM file.
-type OTBMReader struct {
-	data *bytes.Reader
-}
-
 // Initializes a new OTBMReader.
 func NewOTBMReader(filePath string) (*OTBMReader, error) {
 	file, err := os.ReadFile(filePath)
